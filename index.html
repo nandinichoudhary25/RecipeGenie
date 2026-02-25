@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RecipeGenie | Smart Recipes. Smarter Cooking.</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-utensils"></i> RecipeGenie
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="planner.html">Meal Planner</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO IMAGE SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Smart Recipes. Smarter Cooking.</h1>
+            <p>Your AI-powered kitchen companion built using IBM watsonx Assistant.</p>
+            <a href="recipes.html" class="btn">Explore Recipes</a>
+        </div>
+    </section>
+    <div id="footer-placeholder"></div>
+
+<script>
+fetch("footer.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("footer-placeholder").innerHTML = data;
+  });
+</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Planner | RecipeGenie</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">🍳 RecipeGenie</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="planner.html" class="active">Meal Planner</a></li>
+    </ul>
+</nav>
+
+<section class="planner-section">
+
+    <h1>Smart Meal Planner</h1>
+    <p>Select your preferences and generate a meal idea.</p>
+
+    <div class="planner-form">
+        <label>Meal Type</label>
+        <select id="mealType">
+            <option value="">Select</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+        </select>
+
+        <label>Preference</label>
+        <select id="mealPreference">
+            <option value="">Select</option>
+            <option value="veg">Vegetarian</option>
+            <option value="high-protein">High Protein</option>
+            <option value="light">Light Meal</option>
+        </select>
+
+        <button onclick="generateMeal()" class="btn">Generate Meal</button>
+    </div>
+
+    <div id="mealResult" class="meal-result"></div>
+
+</section>
+
+<script>
+function generateMeal() {
+
+    const type = document.getElementById("mealType").value;
+    const preference = document.getElementById("mealPreference").value;
+    const result = document.getElementById("mealResult");
+
+    if (!type || !preference) {
+        result.innerHTML = "<p>Please select both options.</p>";
+        return;
+    }
+
+    const meals = {
+        breakfast: {
+            veg: ["Poha", "Khaman"],
+            "high-protein": ["Palak Paneer"],
+            light: ["Poha"]
+        },
+        lunch: {
+            veg: ["Matar Paneer", "Palak Paneer", "Veg Pulav"],
+            "high-protein": ["Palak Paneer", "Khichdi"],
+            light: ["Veg Pulav"]
+        },
+        dinner: {
+            veg: ["Pasta", "Veg Manchurian", "Khichdi"],
+            "high-protein": ["Palak Paneer"],
+            light: ["Khichdi"]
+        },
+        dessert: {
+            veg: ["Rabdi", "Chocolate Brownie"],
+            "high-protein": ["Rabdi"],
+            light: ["Chocolate Brownie"]
+        }
+    };
+
+    if (meals[type] && meals[type][preference]) {
+
+        const options = meals[type][preference];
+        const randomMeal = options[Math.floor(Math.random() * options.length)];
+
+        result.innerHTML = `
+            <h3>Suggested Meal:</h3>
+            <p>${randomMeal}</p>
+        `;
+    } else {
+        result.innerHTML = "<p>No meal found for selected combination.</p>";
+    }
+}
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>
